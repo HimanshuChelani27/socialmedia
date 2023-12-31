@@ -285,6 +285,8 @@ app.post('/users/:user_id/follow', (req, res) => {
 
 
 app.get('/search', (req, res) => {
+    console.log("Coming in search")
+    console.log(req.body)
     const searchQuery = req.body.q || ''; // Retrieve the search query from query parameters
 
     // Define the base SQL query without any specific conditions
@@ -470,6 +472,9 @@ app.post('/posts/:post_id/like', (req, res) => {
     const postId = req.params.post_id;
     console.log(postId)
     const loggedInUserId = req.body.loggedInUserId; 
+
+    console.log("Like api hitting")
+    // console.log("REquest", req)
 
     // Check if the post with the given ID exists
     db.get('SELECT * FROM posts WHERE post_id = ?', [postId], (err, post) => {
